@@ -21,6 +21,12 @@ public class TodoController {
     public String postMethodName(@RequestBody Todo request) {
         String title = request.getTitle();
         String description = request.getDescription();
+        Todo t=new Todo();
+        t.setTitle(title);
+        t.setDescription(description);
+        t.setId(counter);
+        todos.add(t);
+        counter++;
         return "saved";
     }
 
