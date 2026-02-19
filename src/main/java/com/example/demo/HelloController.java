@@ -1,7 +1,11 @@
 package com.example.demo;
 
+import java.util.Map;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 
@@ -15,6 +19,18 @@ public class HelloController {
     public String hello() {
         return "hello from the spring Boot";
     }
-    
-       
+    @GetMapping("/json")
+    public Map<String,String> json(){
+        return Map.of(
+                "message", "Hello from Spring Boot",
+                "status", "success"
+        );
+    } 
+    @GetMapping("/greet")
+    // to pass the params we do this
+    public  Map<String,String> greet(@RequestParam String name) {
+        return Map.of(
+            "greeting","hello " + name
+        );
+    }
 }
